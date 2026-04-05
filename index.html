@@ -5,26 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ali Reza Sajun · Excellence in Service</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --navy: #0b1c2e;
-        --navy2: #152d46;
-        --gold: #c9a84c;
-        --gold2: #f0d080;
-        --cream: #faf8f3;
-        --light: #f0ede6;
-        --muted: #7a8799;
-        --text: #1e2b3a;
-
-        --c-community: #d97232;
-        --c-global: #2a85c8;
-        --c-innovation: #27a36b;
-        --c-mentorship: #8b52c6;
+        --navy: #08141f;
+        --navy2: #0e2035;
+        --navy3: #162d47;
+        --gold: #c8a84b;
+        --gold2: #eed97a;
+        --cream: #f7f4ee;
+        --muted: #8599ad;
+        --text: #1a2a38;
+        --c-community: #e07535;
+        --c-global: #2d8fd4;
+        --c-innovation: #28a96e;
+        --c-mentorship: #9055cc;
       }
-
       *,
       *::before,
       *::after {
@@ -32,562 +30,1579 @@
         margin: 0;
         padding: 0;
       }
-
       body {
-        font-family: "DM Sans", sans-serif;
+        font-family: "Outfit", sans-serif;
         background: var(--cream);
         color: var(--text);
         overflow-x: hidden;
       }
-
       h1,
       h2,
       h3,
-      h4 {
-        font-family: "DM Serif Display", serif;
+      h4,
+      .serif {
+        font-family: "Cormorant Garamond", serif;
       }
 
-      /* ─── HERO ─────────────────────────────────────── */
+      /* ═══ HERO ═══ */
       .hero {
+        min-height: 100vh;
         background: var(--navy);
-        color: #fff;
-        padding: 80px 24px 64px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 32px 64px;
         text-align: center;
         position: relative;
         overflow: hidden;
       }
-      .hero::before {
+      .hero-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        pointer-events: none;
+        animation: orbFloat 12s ease-in-out infinite;
+      }
+      .hero-orb-1 {
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(200, 168, 75, 0.18) 0%,
+          transparent 70%
+        );
+        top: -150px;
+        left: -100px;
+        animation-delay: 0s;
+      }
+      .hero-orb-2 {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(45, 143, 212, 0.14) 0%,
+          transparent 70%
+        );
+        bottom: -100px;
+        right: -80px;
+        animation-delay: -6s;
+      }
+      .hero-orb-3 {
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(144, 85, 204, 0.1) 0%,
+          transparent 70%
+        );
+        top: 40%;
+        left: 60%;
+        animation-delay: -3s;
+      }
+      @keyframes orbFloat {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30px, -20px) scale(1.05);
+        }
+        66% {
+          transform: translate(-20px, 30px) scale(0.97);
+        }
+      }
+      .hero::after {
         content: "";
         position: absolute;
         inset: 0;
-        background:
-          radial-gradient(
-            ellipse 60% 50% at 20% 50%,
-            rgba(201, 168, 76, 0.12) 0%,
-            transparent 70%
-          ),
-          radial-gradient(
-            ellipse 60% 50% at 80% 50%,
-            rgba(42, 133, 200, 0.1) 0%,
-            transparent 70%
-          );
+        opacity: 0.4;
         pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
       }
-      .hero-tag {
-        display: inline-block;
-        font-size: 0.72rem;
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 840px;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.68rem;
         font-weight: 600;
-        letter-spacing: 0.18em;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
         color: var(--gold);
-        border: 1px solid rgba(201, 168, 76, 0.4);
-        padding: 5px 16px;
+        border: 1px solid rgba(200, 168, 75, 0.3);
+        padding: 6px 20px;
         border-radius: 100px;
-        margin-bottom: 20px;
+        margin-bottom: 28px;
       }
-      .hero h1 {
-        font-size: clamp(2.4rem, 6vw, 4rem);
+      .hero-eyebrow::before,
+      .hero-eyebrow::after {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: var(--gold);
+        opacity: 0.5;
+      }
+
+      .hero-name {
+        font-size: clamp(3.2rem, 8vw, 6.5rem);
         color: #fff;
-        line-height: 1.05;
+        font-weight: 700;
+        line-height: 0.95;
+        letter-spacing: -0.01em;
         margin-bottom: 16px;
       }
-      .hero h1 em {
-        color: var(--gold2);
+      .hero-name em {
+        display: block;
         font-style: italic;
+        font-weight: 400;
+        color: var(--gold2);
+        font-size: 0.62em;
+        margin-top: 6px;
       }
-      .hero-sub {
-        max-width: 580px;
-        margin: 0 auto 36px;
-        color: rgba(255, 255, 255, 0.65);
-        font-size: 0.95rem;
+      .hero-rule {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin: 20px auto;
+      }
+      .hero-bio {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.5);
         line-height: 1.7;
+        max-width: 500px;
+        margin: 0 auto 48px;
       }
+
       .hero-stats {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 12px 32px;
-        margin-top: 8px;
+        gap: 0;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
       }
       .hero-stat {
+        flex: 1;
+        min-width: 110px;
+        padding: 22px 20px;
         text-align: center;
+        border-right: 1px solid rgba(255, 255, 255, 0.07);
       }
-      .hero-stat strong {
+      .hero-stat:last-child {
+        border-right: none;
+      }
+      .hero-stat-num {
         display: block;
-        font-family: "DM Serif Display", serif;
-        font-size: 2rem;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.8rem;
+        font-weight: 700;
         color: var(--gold2);
         line-height: 1;
+        margin-bottom: 4px;
       }
-      .hero-stat span {
-        font-size: 0.72rem;
-        color: rgba(255, 255, 255, 0.5);
-        letter-spacing: 0.06em;
+      .hero-stat-label {
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
       }
 
-      /* ─── SECTION ───────────────────────────────────── */
-      .section {
-        padding: 64px 24px;
+      .scroll-cue {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255, 255, 255, 0.2);
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        animation: scrollBob 2.4s ease-in-out infinite;
+        z-index: 2;
+      }
+      @keyframes scrollBob {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(8px);
+        }
+      }
+
+      /* ═══ AWARDS BANNER ═══ */
+      .awards-banner {
+        background: var(--navy2);
+        border-bottom: 1px solid rgba(200, 168, 75, 0.15);
+        padding: 14px 32px;
+      }
+      .awards-banner-inner {
         max-width: 1200px;
         margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
       }
-      .section-label {
-        font-size: 0.72rem;
+      .awards-banner-label {
+        font-size: 0.6rem;
         font-weight: 600;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: var(--gold);
-        display: block;
-        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.25);
+        white-space: nowrap;
       }
-      .section-title {
-        font-size: clamp(1.6rem, 3vw, 2.4rem);
-        color: var(--navy);
-        margin-bottom: 8px;
+      .awards-banner-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
       }
-      .section-divider {
-        width: 48px;
-        height: 3px;
-        background: linear-gradient(90deg, var(--gold), var(--gold2));
-        border-radius: 2px;
-        margin-bottom: 40px;
+      .award-chip {
+        font-size: 0.7rem;
+        font-weight: 500;
+        padding: 5px 14px;
+        border-radius: 100px;
+        white-space: nowrap;
+      }
+      .award-chip-gold {
+        background: rgba(200, 168, 75, 0.12);
+        color: var(--gold2);
+        border: 1px solid rgba(200, 168, 75, 0.25);
+      }
+      .award-chip-purple {
+        background: rgba(144, 85, 204, 0.12);
+        color: #c49ef0;
+        border: 1px solid rgba(144, 85, 204, 0.25);
+      }
+      .award-chip-blue {
+        background: rgba(45, 143, 212, 0.1);
+        color: #7dc4f0;
+        border: 1px solid rgba(45, 143, 212, 0.22);
+      }
+      .award-chip-green {
+        background: rgba(40, 169, 110, 0.1);
+        color: #6ddbb0;
+        border: 1px solid rgba(40, 169, 110, 0.22);
       }
 
-      /* ─── SIGNATURE CARDS ────────────────────────────── */
-      .sig-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 24px;
+      /* ═══ SECTION CHROME ═══ */
+      .sec-wrap {
+        padding: 80px 32px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .sec-head {
+        margin-bottom: 48px;
+      }
+      .sec-eyebrow {
+        display: block;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+      .sec-title {
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+        color: var(--navy);
+        line-height: 1.05;
+      }
+      .sec-bar {
+        width: 40px;
+        height: 3px;
+        margin-top: 14px;
+        background: linear-gradient(90deg, var(--gold), var(--gold2));
+        border-radius: 2px;
+      }
+
+      /* ═══ SIGNATURE CAROUSEL ═══ */
+      .carousel-wrap {
+        position: relative;
+      }
+      .carousel-track-outer {
+        overflow: hidden;
+        border-radius: 20px;
+      }
+      .carousel-track {
+        display: flex;
+        transition: transform 0.55s cubic-bezier(0.22, 0.68, 0, 1.1);
+        will-change: transform;
       }
       .sig-card {
-        background: #fff;
-        border-radius: 14px;
+        position: relative;
+        border-radius: 0;
         overflow: hidden;
-        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+        background: var(--navy2);
+        aspect-ratio: 16/9;
+        cursor: default;
+        display: block;
+        text-decoration: none;
+        flex: 0 0 100%;
+        width: 100%;
+      }
+      a.sig-card {
+        cursor: pointer;
+      }
+
+      .sig-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        transition:
+          transform 0.5s ease,
+          filter 0.4s ease;
+      }
+      .sig-card.tracker .sig-bg {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: var(--navy2);
+        background-position: center;
+      }
+      .sig-card:hover .sig-bg {
+        transform: scale(1.04);
+        filter: brightness(0.65);
+      }
+      .sig-grad {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(8, 20, 31, 0.95) 0%,
+          rgba(8, 20, 31, 0.5) 45%,
+          rgba(8, 20, 31, 0.1) 80%,
+          transparent 100%
+        );
+        transition: opacity 0.35s ease;
+      }
+      .sig-card:hover .sig-grad {
+        opacity: 0.92;
+      }
+      .sig-cat {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 4px 14px;
+        border-radius: 100px;
+        color: #fff;
+        z-index: 3;
+      }
+      .sig-body {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 32px 40px;
+        z-index: 3;
+        max-width: 700px;
+      }
+      .sig-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 10px;
+      }
+      .sig-desc {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.65;
+        max-width: 520px;
+        display: block;
+      }
+      .sig-arrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 14px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0;
+        transform: translateY(6px);
+        transition:
+          opacity 0.3s 0.05s ease,
+          transform 0.3s 0.05s ease;
+      }
+      .sig-card:hover .sig-arrow {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Carousel controls */
+      .carousel-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 16px;
+      }
+      .carousel-dots {
+        display: flex;
+        gap: 8px;
+      }
+      .carousel-dot {
+        width: 28px;
+        height: 3px;
+        border-radius: 2px;
+        background: rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        transition:
+          background 0.25s ease,
+          width 0.25s ease;
+        border: none;
+        padding: 0;
+      }
+      .carousel-dot.active {
+        background: var(--gold);
+        width: 44px;
+      }
+      /* Arrows overlaid on the carousel itself */
+      .carousel-wrap {
+        position: relative;
+      }
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(255, 255, 255, 0.25);
+        background: rgba(8, 20, 31, 0.45);
+        backdrop-filter: blur(6px);
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          transform 0.2s ease;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      }
+      #sigPrev {
+        left: 16px;
+      }
+      #sigNext {
+        right: 16px;
+      }
+      .carousel-btn:hover {
+        background: var(--gold);
+        border-color: var(--gold);
+        transform: translateY(-50%) scale(1.1);
+      }
+      .carousel-btn svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+
+      /* ═══ PORTFOLIO ═══ */
+      .portfolio-wrap {
+        background: var(--navy);
+        padding: 80px 32px;
+      }
+      .portfolio-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+      .p-head {
+        margin-bottom: 40px;
+      }
+      .p-head .sec-eyebrow {
+        color: var(--gold);
+      }
+      .p-head .sec-title {
+        color: #fff;
+      }
+
+      /* Filters */
+      .fbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 40px;
+      }
+      .fb {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 18px;
+        border-radius: 100px;
+        border: 1.5px solid rgba(255, 255, 255, 0.12);
+        background: transparent;
+        color: rgba(255, 255, 255, 0.5);
+        font-family: "Outfit", sans-serif;
+        font-size: 0.77rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.22s ease;
+        white-space: nowrap;
+      }
+      .fb .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .fb .cnt {
+        font-size: 0.65rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.4);
+        padding: 1px 8px;
+        border-radius: 100px;
+      }
+      .fb:hover {
+        border-color: rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .fb.active {
+        border-color: transparent !important;
+        color: #fff !important;
+      }
+      .fb[data-cat="all"].active {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .fb[data-cat="community"].active {
+        background: var(--c-community);
+      }
+      .fb[data-cat="global"].active {
+        background: var(--c-global);
+      }
+      .fb[data-cat="innovation"].active {
+        background: var(--c-innovation);
+      }
+      .fb[data-cat="mentorship"].active {
+        background: var(--c-mentorship);
+      }
+
+      .yr-sep {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.2);
+        letter-spacing: 0.06em;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        margin-bottom: 20px;
+        margin-top: 40px;
+      }
+      .yr-sep:first-child {
+        margin-top: 0;
+      }
+
+      /* Gallery Grid */
+      .gal-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-bottom: 0;
+      }
+      @media (max-width: 1100px) {
+        .gal-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 720px) {
+        .gal-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 480px) {
+        .gal-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .gal-card {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--navy2);
+        aspect-ratio: 4/3;
+        text-decoration: none;
+        display: block;
         transition:
           transform 0.28s ease,
           box-shadow 0.28s ease;
       }
-      .sig-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      .gal-card.feat {
+        grid-column: span 2;
+        aspect-ratio: 16/9;
       }
-      .sig-card-img {
-        height: 180px;
-        width: 100%;
-        object-fit: cover;
-        border-bottom: 3px solid var(--gold);
-        background: var(--navy2);
-      }
-      .sig-card-body {
-        padding: 20px;
-      }
-      .sig-card-body h3 {
-        font-size: 1.1rem;
-        color: var(--navy);
-        margin-bottom: 8px;
-      }
-      .sig-card-body p {
-        font-size: 0.82rem;
-        color: var(--muted);
-        line-height: 1.6;
+      .gal-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
       }
 
-      /* ─── TIMELINE / PORTFOLIO ────────────────────────── */
-      .portfolio-bg {
-        background: var(--navy);
-        padding: 64px 24px;
+      .gal-img {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center top;
+        transition:
+          transform 0.45s ease,
+          filter 0.35s ease;
       }
-      .portfolio-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      .portfolio-header {
-        margin-bottom: 40px;
-      }
-      .portfolio-header .section-label {
-        color: var(--gold);
-      }
-      .portfolio-header .section-title {
-        color: #fff;
+      .gal-card:hover .gal-img {
+        transform: scale(1.07);
+        filter: brightness(0.45);
       }
 
-      /* Legend & Filters */
-      .filter-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 36px;
-        align-items: center;
+      .gal-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(8, 20, 31, 0.88) 0%,
+          rgba(8, 20, 31, 0.3) 55%,
+          transparent 100%
+        );
+        transition: opacity 0.3s ease;
       }
-      .filter-btn {
-        display: flex;
-        align-items: center;
-        gap: 7px;
-        padding: 7px 16px;
-        border-radius: 100px;
-        border: 1.5px solid rgba(255, 255, 255, 0.18);
-        background: transparent;
-        color: rgba(255, 255, 255, 0.65);
-        font-family: "DM Sans", sans-serif;
-        font-size: 0.8rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.22s ease;
-      }
-      .filter-btn .dot {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        flex-shrink: 0;
-      }
-      .filter-btn:hover,
-      .filter-btn.active {
-        border-color: transparent;
-        color: #fff;
-      }
-      .filter-btn[data-cat="all"].active {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.35);
-      }
-      .filter-btn[data-cat="community"].active {
-        background: var(--c-community);
-      }
-      .filter-btn[data-cat="global"].active {
-        background: var(--c-global);
-      }
-      .filter-btn[data-cat="innovation"].active {
-        background: var(--c-innovation);
-      }
-      .filter-btn[data-cat="mentorship"].active {
-        background: var(--c-mentorship);
+      .gal-card:hover .gal-overlay {
+        opacity: 0;
       }
 
-      /* Year Groups */
-      .year-group {
-        margin-bottom: 48px;
-      }
-      .year-label {
-        font-family: "DM Serif Display", serif;
-        font-size: 1.05rem;
-        color: rgba(255, 255, 255, 0.25);
-        letter-spacing: 0.08em;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-      }
-      .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 16px;
-      }
-
-      /* Service Card */
-      .svc-card {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 18px 20px;
+      .gal-hover {
+        position: absolute;
+        inset: 0;
+        background: rgba(8, 20, 31, 0.82);
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        text-decoration: none;
-        color: inherit;
-        transition:
-          background 0.22s ease,
-          transform 0.22s ease,
-          border-color 0.22s ease;
-        position: relative;
-        overflow: hidden;
+        justify-content: flex-end;
+        padding: 18px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 4;
       }
-      .svc-card::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        border-radius: 3px 0 0 3px;
-        background: var(--bar-color, rgba(255, 255, 255, 0.15));
-        transition: width 0.22s ease;
-      }
-      .svc-card:hover {
-        background: rgba(255, 255, 255, 0.09);
-        transform: translateY(-3px);
-        border-color: rgba(255, 255, 255, 0.15);
-      }
-      .svc-card:hover::before {
-        width: 4px;
-      }
-      .svc-card.hidden {
-        display: none;
+      .gal-card:hover .gal-hover {
+        opacity: 1;
       }
 
-      .svc-card-top {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 10px;
+      .gal-front {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 14px;
+        z-index: 3;
+        pointer-events: none;
       }
-      .svc-cat-badge {
-        flex-shrink: 0;
-        font-size: 0.65rem;
+      .gal-cat-pill {
+        display: inline-block;
+        font-size: 0.58rem;
         font-weight: 600;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        padding: 3px 10px;
+        padding: 3px 9px;
         border-radius: 100px;
         color: #fff;
+        margin-bottom: 7px;
       }
-      .svc-date {
-        font-size: 0.72rem;
-        color: rgba(255, 255, 255, 0.35);
-        font-weight: 500;
-        letter-spacing: 0.04em;
-        margin-top: 3px;
+      .gal-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.92);
+        line-height: 1.3;
       }
-      .svc-title {
-        font-family: "DM Serif Display", serif;
-        font-size: 0.98rem;
-        color: rgba(255, 255, 255, 0.88);
-        line-height: 1.4;
-      }
-      .svc-role {
-        font-size: 0.78rem;
-        color: rgba(255, 255, 255, 0.45);
-        border-top: 1px solid rgba(255, 255, 255, 0.07);
-        padding-top: 10px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .svc-role::before {
-        content: "↳";
-        color: rgba(255, 255, 255, 0.25);
-        font-size: 0.8rem;
-      }
-      .svc-arrow {
-        position: absolute;
-        right: 16px;
-        bottom: 16px;
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.2);
-        transition:
-          color 0.22s,
-          transform 0.22s;
-      }
-      .svc-card:hover .svc-arrow {
-        color: rgba(255, 255, 255, 0.6);
-        transform: translate(2px, -2px);
+      .gal-date {
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 4px;
       }
 
-      /* Count badge */
-      .count-badge {
+      .gh-role {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.5;
+        border-left: 2px solid var(--gold);
+        padding-left: 10px;
+        margin-bottom: 12px;
+      }
+      .gh-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.3;
+        margin-bottom: 8px;
+      }
+      .gh-link {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.5);
+        gap: 5px;
         font-size: 0.7rem;
         font-weight: 600;
-        border-radius: 100px;
-        padding: 2px 9px;
-        margin-left: 8px;
-        vertical-align: middle;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .gh-link::after {
+        content: "↗";
+        font-size: 0.8rem;
       }
 
-      /* ─── FOOTER ─────────────────────────────────────── */
+      /* ═══ SMOOTH SCROLL ═══ */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* ═══ STICKY NAV ═══ */
+      .sticky-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 32px;
+        height: 56px;
+        background: rgba(8, 20, 31, 0);
+        backdrop-filter: blur(0px);
+        border-bottom: 1px solid transparent;
+        transition:
+          background 0.35s ease,
+          backdrop-filter 0.35s ease,
+          border-color 0.35s ease;
+      }
+      .sticky-nav.scrolled {
+        background: rgba(8, 20, 31, 0.88);
+        backdrop-filter: blur(14px);
+        border-bottom-color: rgba(255, 255, 255, 0.07);
+      }
+      .nav-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0);
+        transition: color 0.35s ease;
+        white-space: nowrap;
+      }
+      .sticky-nav.scrolled .nav-name {
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0);
+        text-decoration: none;
+        transition: color 0.25s ease;
+      }
+      .sticky-nav.scrolled .nav-links a {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .sticky-nav.scrolled .nav-links a:hover {
+        color: var(--gold);
+      }
+      @media (max-width: 560px) {
+        .nav-links {
+          display: none;
+        }
+        .sticky-nav {
+          padding: 0 20px;
+        }
+      }
+
+      /* ═══ PORTFOLIO SUBTITLE & INTRO ═══ */
+      .sec-subtitle {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-top: 6px;
+        font-style: italic;
+        letter-spacing: 0.02em;
+      }
+      .portfolio-intro {
+        margin-top: 20px;
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1.75;
+        max-width: 680px;
+        border-left: 2px solid rgba(200, 168, 75, 0.35);
+        padding-left: 16px;
+      }
+
+      /* ═══ HOVER HINT ═══ */
+      .hover-hint {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-top: 16px;
+        font-size: 0.72rem;
+        font-weight: 500;
+        color: rgba(200, 168, 75, 0.6);
+        letter-spacing: 0.06em;
+        border: 1px dashed rgba(200, 168, 75, 0.25);
+        padding: 6px 14px;
+        border-radius: 100px;
+        animation: hintPulse 3s ease-in-out infinite;
+      }
+      @keyframes hintPulse {
+        0%,
+        100% {
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* ═══ CLOSING SECTION ═══ */
+      .closing-section {
+        background: linear-gradient(135deg, var(--navy3) 0%, var(--navy2) 100%);
+        padding: 72px 32px;
+        border-top: 1px solid rgba(200, 168, 75, 0.12);
+      }
+      .closing-inner {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .closing-quote {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.3rem, 2.8vw, 2rem);
+        font-style: italic;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.55;
+        margin-bottom: 18px;
+        position: relative;
+        padding: 0 24px;
+      }
+      .closing-quote::before {
+        content: "\201C";
+        position: absolute;
+        left: -4px;
+        top: -10px;
+        font-size: 4rem;
+        color: var(--gold);
+        opacity: 0.3;
+        line-height: 1;
+      }
+      .closing-meta {
+        font-size: 0.68rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.7;
+        margin-bottom: 40px;
+      }
+      .closing-stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        flex-wrap: wrap;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 14px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .cs-item {
+        flex: 1;
+        min-width: 100px;
+        padding: 20px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      .cs-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--gold2);
+        line-height: 1;
+      }
+      .cs-label {
+        font-size: 0.58rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .cs-divider {
+        width: 1px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      /* ═══ FOOTER REDESIGN ═══ */
       footer {
         text-align: center;
-        padding: 28px 24px;
+        padding: 48px 24px 40px;
         background: var(--navy);
-        color: rgba(255, 255, 255, 0.35);
-        font-size: 0.78rem;
         border-top: 1px solid rgba(255, 255, 255, 0.06);
       }
+      .footer-inner {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .footer-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 4px;
+      }
+      .footer-role {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.3);
+        letter-spacing: 0.06em;
+        margin-bottom: 20px;
+      }
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .footer-links a {
+        font-size: 0.75rem;
+        color: var(--gold);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+      .footer-links a:hover {
+        color: var(--gold2);
+      }
+      .footer-sep {
+        color: rgba(255, 255, 255, 0.15);
+        font-size: 0.75rem;
+      }
+      .footer-copy {
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.18);
+        letter-spacing: 0.1em;
+      }
 
-      /* ─── RESPONSIVE ─────────────────────────────────── */
-      @media (max-width: 600px) {
-        .hero {
-          padding: 60px 20px 48px;
+      /* ═══ RESPONSIVE ═══ */
+      @media (max-width: 640px) {
+        .hero-stats {
+          border-radius: 12px;
         }
-        .cards-grid {
-          grid-template-columns: 1fr;
+        .hero-stat {
+          min-width: 90px;
+          padding: 16px 12px;
         }
-        .filter-row {
-          gap: 8px;
+        .hero-stat-num {
+          font-size: 2rem;
         }
-        .filter-btn {
-          font-size: 0.75rem;
-          padding: 6px 12px;
+        .sec-wrap {
+          padding: 56px 20px;
+        }
+        .portfolio-wrap {
+          padding: 56px 20px;
         }
       }
     </style>
   </head>
   <body>
-    <!-- ════ HERO ════ -->
+    <nav class="sticky-nav" id="stickyNav">
+      <span class="nav-name">Ali Reza Sajun</span>
+      <ul class="nav-links">
+        <li><a href="#initiatives">Initiatives</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li>
+          <a href="/cdn-cgi/l/email-protection#29485a48435c4769485c5a074c4d5c"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </nav>
     <header class="hero">
-      <div class="hero-tag">CEN Excellence in Service Award · 2026</div>
-      <h1>Ali Reza Sajun<br /><em>Serving with Purpose</em></h1>
-      <p class="hero-sub">
-        Lab Instructor, CSE Department · American University of Sharjah<br />
-        Building community, bridging industry, and empowering students to make
-        their mark on the world.
-      </p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <strong>48</strong><span>Documented Activities</span>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">CEN Excellence in Service Award · 2026</div>
+        <h1 class="hero-name">
+          Ali Reza Sajun<em>Enhancing Student Experience</em>
+        </h1>
+        <div class="hero-rule"></div>
+        <p class="hero-bio">
+          Lab Instructor | CSE Department | American University of Sharjah<br />
+          From securing AUS's first-ever tour of CERN to leading multiple
+          hackathons - three years of turning ideas into experiences, and
+          students into leaders.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-target="900" data-prefix="~"
+              >0</span
+            ><span class="hero-stat-label">Students at Events</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-target="6">0</span
+            ><span class="hero-stat-label">Global Study Tours</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-target="15">0</span
+            ><span class="hero-stat-label">Research Mentees</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-target="450" data-suffix="+"
+              >0</span
+            ><span class="hero-stat-label">Citations</span>
+          </div>
         </div>
-        <div class="hero-stat">
-          <strong>~200</strong><span>Students on Global Tours</span>
-        </div>
-        <div class="hero-stat">
-          <strong>500+</strong><span>Hackathon Registrants</span>
-        </div>
-        <div class="hero-stat">
-          <strong>6</strong><span>International Study Tours</span>
-        </div>
-        <div class="hero-stat">
-          <strong>15</strong><span>Research Mentees</span>
-        </div>
+      </div>
+      <div class="scroll-cue">
+        <span>Scroll</span>
+        <svg width="18" height="24" viewBox="0 0 18 24" fill="none">
+          <rect
+            x="1"
+            y="1"
+            width="16"
+            height="22"
+            rx="8"
+            stroke="white"
+            stroke-width="1.5"
+          />
+          <rect x="7.5" y="5" width="3" height="5" rx="1.5" fill="white" />
+        </svg>
       </div>
     </header>
 
-    <!-- ════ SIGNATURE INITIATIVES ════ -->
-    <div class="section">
-      <span class="section-label">Highlights</span>
-      <h2 class="section-title">Signature Initiatives</h2>
-      <div class="section-divider"></div>
-      <div class="sig-grid">
-        <div class="sig-card">
-          <img
-            src="Screenshot 2026-04-05 at 6.23.36 PM.png"
-            class="sig-card-img"
-            alt="CEN Midterm Tracker"
-            onerror="
-              this.src =
-                'https://via.placeholder.com/480x360/0b1c2e/c9a84c?text=CEN+Midterm+Tracker'
-            "
-          />
-          <div class="sig-card-body">
-            <h3>CEN Midterm Tracker</h3>
-            <p>
-              Built from scratch in one week during the March 2026 crisis — an
-              AI-powered platform that transformed college-wide exam scheduling
-              and gave faculty real-time visibility into student workloads.
-            </p>
-          </div>
-        </div>
-        <div class="sig-card">
-          <img
-            src="dsc9437_1.jpeg"
-            class="sig-card-img"
-            alt="Tourism Hackathon"
-          />
-          <div class="sig-card-body">
-            <h3>Sharjah Tourism Hackathon</h3>
-            <p>
-              Spearheaded AUS's flagship 2025 hackathon with SCTDA — drawing
-              500+ registrants from 25 universities and securing multi-year
-              sponsorship from the Chairman of SCTDA.
-            </p>
-          </div>
-        </div>
-        <div class="sig-card">
-          <img
-            src="cse_students_complete_a_study_tour_in_switzerland_and_france_1.jpg"
-            class="sig-card-img"
-            alt="CERN Visit"
-          />
-          <div class="sig-card-body">
-            <h3>AUS's First Visit to CERN</h3>
-            <p>
-              Navigated intense security clearances to secure AUS's very first
-              guided tour of CERN's Large Hadron Collider — one of six
-              international study tours taken with nearly 200 students.
-            </p>
-          </div>
-        </div>
-        <div class="sig-card">
-          <img
-            src="IMG-20251007-WA0002.jpg"
-            class="sig-card-img"
-            alt="CSE AI Lab"
-            onerror="
-              this.src =
-                'https://via.placeholder.com/480x360/0b1c2e/c9a84c?text=CSE+AI+Lab'
-            "
-          />
-          <div class="sig-card-body">
-            <h3>CSE AI Lab Infrastructure</h3>
-            <p>
-              Sole administrator of the department's 30-GPU AI Lab — managing
-              procurement, maintenance, and resource allocation to fuel
-              cutting-edge student and faculty research.
-            </p>
-          </div>
+    <div class="awards-banner">
+      <div class="awards-banner-inner">
+        <span class="awards-banner-label">Recognised for</span>
+        <div class="awards-banner-chips">
+          <span class="award-chip award-chip-gold"
+            >🏅 2024–25 CEN Excellence in Teaching (Lab Instructor)</span
+          >
+          <span class="award-chip award-chip-purple"
+            >🏆 Best Short Paper · IEEE ICALT 2024</span
+          >
+          <span class="award-chip award-chip-blue"
+            >🌍 Harvard HSIL Hackathon UAE Lead · 2026</span
+          >
+          <span class="award-chip award-chip-green"
+            >🚀 ~900 Students at Community Events</span
+          >
         </div>
       </div>
     </div>
 
-    <!-- ════ PORTFOLIO TIMELINE ════ -->
-    <div class="portfolio-bg">
-      <div class="portfolio-inner">
-        <div class="portfolio-header">
-          <span class="section-label">Full Record</span>
-          <h2 class="section-title">Complete Service Portfolio</h2>
-          <div class="section-divider"></div>
+    <section id="initiatives">
+      <div class="sec-wrap">
+        <div class="sec-head">
+          <span class="sec-eyebrow">Highlights</span>
+          <h2 class="sec-title">Signature Initiatives</h2>
+          <div class="sec-bar"></div>
         </div>
+        <div class="carousel-wrap">
+          <button class="carousel-btn" id="sigPrev" aria-label="Previous">
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <polyline points="10,3 5,8 10,13" />
+            </svg>
+          </button>
+          <button class="carousel-btn" id="sigNext" aria-label="Next">
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <polyline points="6,3 11,8 6,13" />
+            </svg>
+          </button>
+          <div class="carousel-track-outer">
+            <div class="carousel-track" id="sigTrack">
+              <!-- Slide 2: Sharjah Tourism Hackathon -->
+              <a
+                class="sig-card"
+                href="https://www.aus.edu/media/news/sharjah-tourism-innovation-hackathon-at-aus-reimagines-travel-and-tourism-experience"
+                target="_blank"
+              >
+                <div
+                  class="sig-bg"
+                  style="
+                    background-image: url(&quot;downloaded_images/Hackathon.jpeg&quot;);
+                    background-position: 85% center;
+                  "
+                ></div>
+                <div class="sig-grad"></div>
+                <span
+                  class="sig-cat"
+                  style="background: rgba(40, 169, 110, 0.85)"
+                  >Innovation</span
+                >
+                <div class="sig-body">
+                  <div class="sig-title">Sharjah Tourism Hackathon</div>
+                  <div class="sig-desc">
+                    500+ registrants from 25 universities. Drew the Chairman of
+                    SCTDA alongside the AUS Chancellor and Provost — securing
+                    multi-year sponsorship and cementing a flagship regional
+                    event.
+                  </div>
+                  <span class="sig-arrow">View article ↗</span>
+                </div>
+              </a>
 
-        <!-- Filters -->
-        <div class="filter-row">
-          <button class="filter-btn active" data-cat="all">
+              <!-- Slide 4: CEN Midterm Tracker -->
+              <a
+                class="sig-card tracker"
+                href="https://midtracker.auscse.com/"
+                target="_blank"
+              >
+                <div
+                  class="sig-bg"
+                  style="
+                    background-image: url(&quot;downloaded_images/CEN Midterm Tracker.png&quot;);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-color: var(--navy2);
+                  "
+                ></div>
+                <div class="sig-grad"></div>
+                <span
+                  class="sig-cat"
+                  style="background: rgba(45, 143, 212, 0.85)"
+                  >Innovation</span
+                >
+                <div class="sig-body">
+                  <div class="sig-title">CEN Midterm Tracker</div>
+                  <div class="sig-desc">
+                    Built from scratch in one week during the March 2026 online
+                    learning crisis — a platform that transformed college-wide
+                    exam scheduling and gave the CEN Executive Council a
+                    real-time bird's-eye view of student workloads.
+                  </div>
+                  <span class="sig-arrow">Check it out ↗</span>
+                </div>
+              </a>
+
+              <!-- Slide 1: Harvard Hackathon -->
+              <a
+                class="sig-card"
+                href="https://hsph.harvard.edu/research/health-systems-innovation-lab/work/hsil-hackathon-2026-building-high-value-health-systems-leveraging-ai/"
+                target="_blank"
+              >
+                <div
+                  class="sig-bg"
+                  style="
+                    background-image: url(&quot;downloaded_images/harvard.jpg&quot;);
+                    background-position: center top;
+                  "
+                ></div>
+                <div class="sig-grad"></div>
+                <span class="sig-cat" style="background: rgba(180, 0, 0, 0.85)"
+                  >Flagship · Upcoming</span
+                >
+                <div class="sig-body">
+                  <div class="sig-title">Harvard HSIL Hackathon 2026</div>
+                  <div class="sig-desc">
+                    Lead organizer for the UAE leg of the world-renowned Harvard
+                    Health Systems Innovation Lab Hackathon — bringing together
+                    students, clinicians, and technologists to reimagine
+                    high-value healthcare through AI, in collaboration with
+                    Dubai Health.
+                  </div>
+                  <span class="sig-arrow">View on Harvard HSPH ↗</span>
+                </div>
+              </a>
+
+              <!-- Slide 3: CERN -->
+              <a
+                class="sig-card"
+                href="https://www.aus.edu/article/cse-students-complete-a-study-tour-in-switzerland-and-france"
+                target="_blank"
+              >
+                <div
+                  class="sig-bg"
+                  style="
+                    background-image: url(&quot;downloaded_images/CSE Students Complete a Study Tour in Switzerland and France.jpg&quot;);
+                  "
+                ></div>
+                <div class="sig-grad"></div>
+                <span
+                  class="sig-cat"
+                  style="background: rgba(45, 143, 212, 0.85)"
+                  >Global</span
+                >
+                <div class="sig-body">
+                  <div class="sig-title">AUS's First Ever Visit to CERN</div>
+                  <div class="sig-desc">
+                    Navigated intense security clearances for AUS's very first
+                    guided tour of CERN's Large Hadron Collider — one of six
+                    international tours spanning Switzerland, Italy, South
+                    Korea, Turkey &amp; Japan.
+                  </div>
+                  <span class="sig-arrow">View article ↗</span>
+                </div>
+              </a>
+
+              <!-- Slide 5: CSE AI Lab -->
+              <div class="sig-card">
+                <div
+                  class="sig-bg"
+                  style="
+                    background-image: url(&quot;downloaded_images/AI Lab.jpg&quot;);
+                  "
+                ></div>
+                <div class="sig-grad"></div>
+                <span
+                  class="sig-cat"
+                  style="background: rgba(144, 85, 204, 0.85)"
+                  >Research Infrastructure</span
+                >
+                <div class="sig-body">
+                  <div class="sig-title">CSE AI Lab Infrastructure</div>
+                  <div class="sig-desc">
+                    Sole administrator of the department's 30-GPU research lab —
+                    managing procurement, maintenance, and access allocation to
+                    power student and faculty research at scale.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 6: IEEE ICALT Best Short Paper -->
+              <a
+                class="sig-card"
+                href="https://www.aus.edu/media/news/aus-team-wins-best-short-paper-award-for-ai-powered-student-engagement-device-at-ieee-icalt-conference-2024"
+                target="_blank"
+              >
+                <div
+                  class="sig-bg"
+                  style="
+                    background-image: url(&quot;downloaded_images/AUS team wins Best Short Paper Award for AI-powered student engagement device at IEEE ICALT Conference 2024.jpg&quot;);
+                    background-position: center top;
+                  "
+                ></div>
+                <div class="sig-grad"></div>
+                <span
+                  class="sig-cat"
+                  style="background: rgba(144, 85, 204, 0.85)"
+                  >🏆 Award · IEEE ICALT 2024</span
+                >
+                <div class="sig-body">
+                  <div class="sig-title">
+                    Best Short Paper — IEEE ICALT 2024
+                  </div>
+                  <div class="sig-desc">
+                    Co-authored and mentored the team that won Best Short Paper
+                    at the 24th IEEE International Conference on Advanced
+                    Learning Technologies — presenting an AI-powered edge device
+                    for real-time student engagement monitoring in classrooms.
+                  </div>
+                  <span class="sig-arrow">View article ↗</span>
+                </div>
+              </a>
+            </div>
+            <!-- /carousel-track -->
+          </div>
+          <!-- /carousel-track-outer -->
+
+          <div class="carousel-controls">
+            <div class="carousel-dots" id="sigDots"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-wrap" id="portfolio">
+      <div class="portfolio-inner">
+        <div class="p-head">
+          <span class="sec-eyebrow">Full Record</span>
+          <h2 class="sec-title">Three Years of Service</h2>
+          <p class="sec-subtitle">
+            As documented by the American University of Sharjah
+          </p>
+          <div class="sec-bar"></div>
+          <p class="portfolio-intro">
+            Every entry below links to a published article on the AUS website —
+            a verified, institutional record of contribution spanning community
+            building, global exposure, innovation, and academic mentorship. This
+            represents only the activities that made it to the AUS website; the
+            full picture is wider still.
+          </p>
+          <div class="hover-hint">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            Hover over any image to reveal my contribution
+          </div>
+        </div>
+        <div class="fbar">
+          <button class="fb active" data-cat="all">
             <span
               class="dot"
-              style="background: rgba(255, 255, 255, 0.4)"
-            ></span>
-            All Activities <span class="count-badge" id="count-all">48</span>
+              style="background: rgba(255, 255, 255, 0.45)"
+            ></span
+            >All Activities <span class="cnt" id="cnt-all">49</span>
           </button>
-          <button class="filter-btn" data-cat="community">
-            <span class="dot" style="background: var(--c-community)"></span>
-            Community &amp; Culture
-            <span class="count-badge" id="count-community"></span>
+          <button class="fb" data-cat="community">
+            <span class="dot" style="background: var(--c-community)"></span
+            >Community &amp; Culture
+            <span class="cnt" id="cnt-community"></span>
           </button>
-          <button class="filter-btn" data-cat="global">
-            <span class="dot" style="background: var(--c-global)"></span>
-            Global &amp; Industry
-            <span class="count-badge" id="count-global"></span>
+          <button class="fb" data-cat="global">
+            <span class="dot" style="background: var(--c-global)"></span>Global
+            &amp; Industry <span class="cnt" id="cnt-global"></span>
           </button>
-          <button class="filter-btn" data-cat="innovation">
-            <span class="dot" style="background: var(--c-innovation)"></span>
-            Innovation &amp; Events
-            <span class="count-badge" id="count-innovation"></span>
+          <button class="fb" data-cat="innovation">
+            <span class="dot" style="background: var(--c-innovation)"></span
+            >Innovation &amp; Events
+            <span class="cnt" id="cnt-innovation"></span>
           </button>
-          <button class="filter-btn" data-cat="mentorship">
-            <span class="dot" style="background: var(--c-mentorship)"></span>
-            Academic Mentorship
-            <span class="count-badge" id="count-mentorship"></span>
+          <button class="fb" data-cat="mentorship">
+            <span class="dot" style="background: var(--c-mentorship)"></span
+            >Academic Mentorship <span class="cnt" id="cnt-mentorship"></span>
           </button>
         </div>
-
-        <!-- Timeline container -->
         <div id="timeline"></div>
       </div>
-    </div>
+    </section>
 
-    <!-- ════ FOOTER ════ -->
+    <section class="closing-section">
+      <div class="closing-inner">
+        <div class="closing-quote">
+          "True service is not just about managing systems or organizing events
+          - it is about architecting a student experience where innovation has
+          no limits and learning has no borders."
+        </div>
+        <div class="closing-meta">
+          Ali Reza Sajun · CEN Excellence in Service Award · 2026
+        </div>
+        <div class="closing-stats">
+          <div class="cs-item">
+            <span class="cs-num">49+</span
+            ><span class="cs-label">Published Activities</span>
+          </div>
+          <div class="cs-divider"></div>
+          <div class="cs-item">
+            <span class="cs-num">15+</span
+            ><span class="cs-label">Student Clubs</span>
+          </div>
+          <div class="cs-divider"></div>
+          <div class="cs-item">
+            <span class="cs-num">6</span
+            ><span class="cs-label">Countries Visited</span>
+          </div>
+          <div class="cs-divider"></div>
+          <div class="cs-item">
+            <span class="cs-num">450+</span
+            ><span class="cs-label">Research Citations</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer>
-      © 2026 Ali Reza Sajun &nbsp;·&nbsp; Excellence in Service Portfolio
-      &nbsp;·&nbsp; American University of Sharjah
+      <div class="footer-inner">
+        <div class="footer-name">Ali Reza Sajun</div>
+        <div class="footer-role">
+          Lab Instructor · Computer Science &amp; Engineering · American
+          University of Sharjah
+        </div>
+        <div class="footer-links">
+          <a href="/cdn-cgi/l/email-protection#fd9c8e9c978893bd9c888ed3989988"
+            ><span
+              class="__cf_email__"
+              data-cfemail="ec8d9f8d869982ac8d999fc2898899"
+              >[email&#160;protected]</span
+            ></a
+          >
+          <span class="footer-sep">·</span>
+          <a
+            href="https://www.linkedin.com/in/asajun"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <span class="footer-sep">·</span>
+          <a
+            href="https://scholar.google.com/citations?user=asajun"
+            target="_blank"
+            rel="noopener"
+            >Google Scholar</a
+          >
+          <span class="footer-sep">·</span>
+          <a href="tel:+971561334514">+971 56 133 4514</a>
+        </div>
+        <div class="footer-copy">
+          © 2026 · Excellence in Service Award Portfolio
+        </div>
+      </div>
     </footer>
 
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
     <script>
       const CAT = {
-        community: { label: "Community & Culture", color: "#d97232" },
-        global: { label: "Global & Industry", color: "#2a85c8" },
-        innovation: { label: "Innovation & Events", color: "#27a36b" },
-        mentorship: { label: "Academic Mentorship", color: "#8b52c6" },
+        community: { label: "Community & Culture", color: "#e07535" },
+        global: { label: "Global & Industry", color: "#2d8fd4" },
+        innovation: { label: "Innovation & Events", color: "#28a96e" },
+        mentorship: { label: "Academic Mentorship", color: "#9055cc" },
+      };
+
+      const FEATURED = new Set([
+        "cse-students-complete-a-study-tour-in-switzerland-and-france",
+        "sharjah-tourism-innovation-hackathon-at-aus-reimagines-travel-and-tourism-experience",
+        "cse-students-complete-a-study-trip-to-japan",
+        "cse-hosts-innovatex-hackathon-2026-powered-by-tdra",
+        "cse-students-visit-google-to-explore-learning-opportunities",
+        "cse-students-explore-cutting-edge-technologies-at-microsoft-innovation-hub",
+        "cen-announces-2024-2025-annual-excellence-awards",
+      ]);
+
+      const FILENAME_MAP = {
+        "Dr. Zualkernan Welcomes CSE Freshman Students":
+          "Dr. Zualkernan Welcomes CSE Freshman Students.jpg",
+        "CSE Students Finalists in DELL Envision the Future 2023":
+          "CSE Students Recognized as Finalists in the Annual 2023 Envision the Future Competition hosted by DELL.jpg",
+        "CSE Holds Meet the Department Head Event":
+          "CSE Holds Meet the Department Head Event.jpg",
+        "CEN Clubs Hold Python Workshop Series":
+          "CEN Clubs Hold an Introduction to Python Workshop Series.jpg",
+        "IEEECS Hosts 'Welcome to CSE' Panel Discussion": "IEEECS Hosts.jpg",
+        "CEN Students Embark on Study Trip to South Korea":
+          "CEN Students Embark on Study Trip to South Korea.jpg",
+        "CSE Hosts Student Trip to Al-Aweer Desert":
+          "CSE Hosts Student Trip to Al-Aweer Desert.jpg",
+        "Computer Engineering Club Holds PC Building Workshop":
+          "The Computer Engineering Club Holds a PC Building Workshop.jpg",
+        "CSE Hosts Ramadan Iftar for Senior Students":
+          "CSE Hosts Ramadan Iftar for Senior Students.jpg",
+        "CSE Hosts a Virtual Meet the Department Head Event":
+          "CSE Hosts a Virtual Meet the Department Head Event.png",
+        "CSE Faculty Judge Al Shola Schools 2024 IT Competition":
+          "CSE Faculty Invited to Judge Al Shola Schools 2024 IT Competition.jpg",
+        "CSE Hosts Meet the Department Head for Graduate Students":
+          "CSE Hosts Meet the Department Head for Graduate Students.jpg",
+        "CSE Students Visit Odoo Middle East":
+          "CSE Students Visit Odoo Middle East to Explore Learning Opportunities.jpg",
+        "CSE Holds Meet the CSE Faculty Event":
+          "CSE Holds Meet the CSE Faculty Event.jpg",
+        "AUS Computing Competition — AI & App/IoT Track":
+          "AUS computing competition tests students in programming, AI and appIoT development.jpg",
+        "CSE Students Complete Study Tour in Switzerland & France (CERN)":
+          "CSE Students Complete a Study Tour in Switzerland and France.jpg",
+        "AUS Wins Best Short Paper Award at IEEE ICALT 2024":
+          "AUS team wins Best Short Paper Award for AI-powered student engagement device at IEEE ICALT Conference 2024.jpg",
+        "ASME & Computer Engineering Club Win at AUS Club Fair":
+          "ASME and the Computer Engineering Club Win at AUS Club Fair for Fall 2024.jpg",
+        "CSE Students Visit Accenture Middle East":
+          "CSE Students Visit Accenture Middle East to Explore Learning Opportunities.jpg",
+        "CSE Holds Meet the Head of Department on Instagram":
+          "CSE Holds Meet the Head of Department on Instagram Event.jpg",
+        "CSE Hosts a Trip to Motiongate Dubai":
+          "CSE Hosts a Trip to Motiongate Dubai.jpg",
+        "28 Teams Recognized with Undergraduate Research Grants":
+          "28 Teams Recognized with Undergraduate Research Grants at College of Engineering.jpg",
+        "CSE Students Explore Technologies at Microsoft Innovation Hub":
+          "CSE Students Explore Cutting-edge Technologies at Microsoft Innovation Hub.jpg",
+        "CSE Hosts a Graduate Students Mixer Event":
+          "CSE Hosts a Graduate Students Mixer Event.jpg",
+        "CHBE Students Embark on Study Trip to Italy":
+          "CHBE Students Embark on a Study Trip to Italy.jpg",
+        "CSE Students Explore Hatta":
+          "CSE Students Explore Hatta A Day of Adventure, Bonding, and Fun.jpg",
+        "CSE Launches the CSE Graduate Society Student Club":
+          "CSE Launches the CSE Graduate Society Student Club.jpg",
+        "CSE Graduate Society Hosts First Iftar Gathering":
+          "CSE Graduate Society hosts first iftar gathering to strengthen community bonds.jpg",
+        "CSE Hosts Interactive Instagram Live for Students":
+          "CSE hosts interactive Instagram Live to address student questions.jpg",
+        "CSE Hosts Game Night — Jigsaws & Connection":
+          "CSE hosts Game Night and students compete, connect and unwind over jigsaws.jpg",
+        "CSE Holds the Annual Meet the Faculty Event":
+          "CSE holds the annual Meet the Faculty event.jpg",
+        "CSE Students Visit Chalhoub Group":
+          "CSE students gain industry insights during a visit to Chalhoub Group.jpg",
+        "CSE Grad Games Night":
+          "CSE Grad Games Night fosters fun, community and connection.jpg",
+        "CSE Students Embark on Study Trip to Turkey":
+          "CSE students embark on a study trip to Turkey.jpg",
+        "CSE Hosts Meet the HoD Event": "CSE hosts Meet the HOD event.jpg",
+        "CSE Hosts Graduate Meet the Faculty Event":
+          "CSE hosts Graduate Meet the Faculty event.jpg",
+        "AUS Welcomes Korean Delegation":
+          "AUS welcomes Korean Delegation to strengthen academic and research collaboration.jpg",
+        "Panel: CSE Grads at Odoo — From Campus to Global Impact":
+          "CSE hosts panel discussion entitled From Campus to Global Impact CSE Grads at Odoo.jpg",
+        "Sharjah Tourism Innovation Hackathon at AUS":
+          "Sharjah Tourism Innovation Hackathon at AUS reimagines travel and tourism experience.jpg",
+        "AUS Students Recognized at Global Undergraduate Awards 2025":
+          "AUS students recognized among regional winners at the Global Undergraduate Awards 2025.jpg",
+        "CSE Faculty, Staff & Students Explore Khorfakkan":
+          "CSE faculty, staff and students explore Khorfakkan.jpg",
+        "AUS College of Engineering Invests AED 264,900 in Undergraduate Research Grants":
+          "AUS College of Engineering invests AED 264,900 in student-led projects through Undergraduate Research Grants.jpg",
+        "CSE Students Complete Study Trip to Japan (SEMICON 2025)":
+          "CSE students complete a study trip to Japan.jpg",
+        "Algorithm Club Kicks Off Semester at Week of Welcome": "Algo.jpg",
+        "CSE Hosts InnovateX Hackathon 2026 powered by TDRA":
+          "CSE hosts InnovateX Hackathon 2026 powered by TDRA.jpg",
+        "CSE Students Visit Bayut and Dubizzle":
+          "CSE students visit Bayut and Dubizzle to explore learning opportunities.jpg",
+        "CSE Students Visit Wadi Wurayah Protected National Park":
+          "CSE students visit Wadi Wurayah Protected National Park to explore research opportunities.jpg",
+        "CSE Students Visit Google":
+          "CSE students visit Google to explore learning opportunities.jpg",
+        "CEN announces 2024-2025 Annual Excellence Awards": "teaching.jpg",
       };
 
       const data = [
@@ -599,8 +1614,7 @@
           cat: "community",
         },
         {
-          title:
-            "CSE Students Finalists in DELL Envision the Future Competition 2023",
+          title: "CSE Students Finalists in DELL Envision the Future 2023",
           date: "2023-08-31",
           role: "Co-advised winning project",
           link: "https://www.aus.edu/article/cse-students-recognized-as-finalists-in-the-annual-2023-envision-the-future-competition-hosted-by-dell",
@@ -623,7 +1637,7 @@
         {
           title: "IEEECS Hosts 'Welcome to CSE' Panel Discussion",
           date: "2023-10-09",
-          role: "Contributed as a speaker/advisor",
+          role: "Contributed as a speaker and advisor",
           link: "https://www.aus.edu/article/ieeecs-hosts-welcome-to-cse-panel-discussion",
           cat: "community",
         },
@@ -642,7 +1656,7 @@
           cat: "community",
         },
         {
-          title: "Computer Engineering Club Holds a PC Building Workshop",
+          title: "Computer Engineering Club Holds PC Building Workshop",
           date: "2024-02-29",
           role: "Held workshop on PC building",
           link: "https://www.aus.edu/article/the-computer-engineering-club-holds-a-pc-building-workshop",
@@ -670,8 +1684,7 @@
           cat: "community",
         },
         {
-          title:
-            "CSE Hosts Meet the Department Head Event for Graduate Students",
+          title: "CSE Hosts Meet the Department Head for Graduate Students",
           date: "2024-05-01",
           role: "Organized dedicated session for grad students",
           link: "https://www.aus.edu/article/cse-hosts-meet-the-department-head-event-for-graduate-students",
@@ -702,7 +1715,7 @@
           title:
             "CSE Students Complete Study Tour in Switzerland & France (CERN)",
           date: "2024-06-10",
-          role: "Organized and led international study tour to CERN",
+          role: "Organized and led international study tour — secured AUS's first ever CERN visit",
           link: "https://www.aus.edu/article/cse-students-complete-a-study-tour-in-switzerland-and-france",
           cat: "global",
         },
@@ -714,7 +1727,7 @@
           cat: "mentorship",
         },
         {
-          title: "ASME and Computer Engineering Club Win at AUS Club Fair",
+          title: "ASME & Computer Engineering Club Win at AUS Club Fair",
           date: "2024-09-18",
           role: "Advised and mentored students for club-fair competition",
           link: "https://www.aus.edu/article/asme-and-the-computer-engineering-club-win-at-aus-club-fair-for-fall-2024",
@@ -730,7 +1743,7 @@
         {
           title: "CSE Holds Meet the Head of Department on Instagram",
           date: "2024-10-11",
-          role: "Organized HoD session",
+          role: "Organized HoD session on Instagram Live",
           link: "https://www.aus.edu/article/cse-holds-meet-the-head-of-department-event",
           cat: "community",
         },
@@ -757,7 +1770,7 @@
           cat: "global",
         },
         {
-          title: "CSE Hosts a Graduate Students Mixer Event",
+          title: "CSE Hosts a Graduate Students mixer event",
           date: "2024-11-25",
           role: "Organized graduate student social event",
           link: "https://www.aus.edu/article/cse-hosts-a-graduate-students-mixer-event",
@@ -771,9 +1784,9 @@
           cat: "global",
         },
         {
-          title: "CSE Students Explore Hatta: Adventure, Bonding & Fun",
+          title: "CSE Students Explore Hatta",
           date: "2025-02-22",
-          role: "Assisted in organizing and leading outing",
+          role: "Assisted in organizing and leading the outing",
           link: "https://www.aus.edu/article/cse-students-explore-hatta-a-day-of-adventure-bonding-and-fun",
           cat: "community",
         },
@@ -820,7 +1833,7 @@
           cat: "global",
         },
         {
-          title: "CSE Grad Games Night — Fun, Community & Connection",
+          title: "CSE Grad Games Night",
           date: "2025-05-13",
           role: "Involved in organizing event",
           link: "https://www.aus.edu/article/cse-grad-games-night-fosters-fun-community-and-connection",
@@ -855,8 +1868,7 @@
           cat: "global",
         },
         {
-          title:
-            "Panel Discussion: CSE Grads at Odoo — From Campus to Global Impact",
+          title: "Panel: CSE Grads at Odoo — From Campus to Global Impact",
           date: "2025-10-21",
           role: "Organized and hosted a panel of alumni at Odoo",
           link: "https://www.aus.edu/article/cse-hosts-panel-discussion-entitled-from-campus-to-global-impact-cse-grads-at-odoo",
@@ -865,7 +1877,7 @@
         {
           title: "Sharjah Tourism Innovation Hackathon at AUS",
           date: "2025-11-06",
-          role: "Organized and conducted major hackathon with Sharjah Tourism (SCTDA)",
+          role: "Organized and conducted major hackathon with SCTDA — 500+ registrants from 25 universities",
           link: "https://www.aus.edu/media/news/sharjah-tourism-innovation-hackathon-at-aus-reimagines-travel-and-tourism-experience",
           cat: "innovation",
         },
@@ -892,8 +1904,7 @@
           cat: "mentorship",
         },
         {
-          title:
-            "CSE Students Complete Study Trip to Japan (SEMICON Japan 2025)",
+          title: "CSE Students Complete Study Trip to Japan (SEMICON 2025)",
           date: "2025-12-11",
           role: "Organized and led international study tour to Japan",
           link: "https://www.aus.edu/article/cse-students-complete-a-study-trip-to-japan",
@@ -903,13 +1914,13 @@
           title: "Algorithm Club Kicks Off Semester at Week of Welcome",
           date: "2026-01-12",
           role: "Launched the CSE Algorithms Club",
-          link: "https://www.aus.edu/cen/about/highlights/cen-news-highlights-january-2026",
+          link: "https://www.aus.edu/article/algorithm-club-kicks-off-semester-during-the-week-of-welcome-event",
           cat: "community",
         },
         {
           title: "CSE Hosts InnovateX Hackathon 2026 powered by TDRA",
           date: "2026-01-17",
-          role: "Assisted in organizing hackathon along with CEN clubs",
+          role: "Assisted in organizing hackathon — winners fast-tracked to UAE Hackathon 2026",
           link: "https://www.aus.edu/article/cse-hosts-innovatex-hackathon-2026-powered-by-tdra",
           cat: "innovation",
         },
@@ -937,39 +1948,44 @@
         {
           title: "CSE Students Visit Google",
           date: "2026-02-13",
-          role: "Assisted in organizing industry visit",
+          role: "Assisted in organizing industry visit to Google",
           link: "https://www.aus.edu/article/cse-students-visit-google-to-explore-learning-opportunities",
           cat: "global",
         },
+        {
+          title: "CEN announces 2024-2025 Annual Excellence Awards",
+          date: "2025-05-21",
+          role: "Won the Excellence in Teaching (Lab Instructor) Award",
+          link: "https://www.aus.edu/article/cen-announces-2024-2025-annual-excellence-awards",
+          cat: "community",
+        },
       ];
 
-      // Count per category
+      // Counts
       const counts = { community: 0, global: 0, innovation: 0, mentorship: 0 };
       data.forEach((d) => counts[d.cat]++);
       Object.keys(counts).forEach((c) => {
-        const el = document.getElementById("count-" + c);
+        const el = document.getElementById("cnt-" + c);
         if (el) el.textContent = counts[c];
       });
 
-      // Group by year (most recent first)
-      function groupByYear(items) {
-        const m = {};
-        items.forEach((d) => {
-          const y = d.date.slice(0, 4);
-          if (!m[y]) m[y] = [];
-          m[y].push(d);
-        });
-        // Sort items within year by date desc
-        Object.keys(m).forEach((y) =>
-          m[y].sort((a, b) => b.date.localeCompare(a.date)),
-        );
-        const years = Object.keys(m).sort((a, b) => b - a);
-        return { m, years };
+      function imgFromLink(item) {
+        // Try to find the exact filename from the provided manifest mapping
+        const mappedFile = FILENAME_MAP[item.title];
+        if (mappedFile) {
+          return `downloaded_images/${mappedFile}`;
+        }
+
+        // Fallback for custom entries not in the AUS list
+        return `downloaded_images/${item.title}.jpg`;
       }
 
-      function formatDate(str) {
-        const d = new Date(str);
-        return d.toLocaleDateString("en-US", {
+      function isFeat(link) {
+        return FEATURED.has(link.split("/").pop().split("#")[0]);
+      }
+
+      function fmtDate(d) {
+        return new Date(d).toLocaleDateString("en-US", {
           month: "short",
           day: "numeric",
           year: "numeric",
@@ -977,71 +1993,178 @@
       }
 
       function render(filter) {
-        const visible =
+        const items =
           filter === "all" ? data : data.filter((d) => d.cat === filter);
-        const { m, years } = groupByYear(visible);
+        const byYear = {};
+        items.forEach((d) => {
+          const y = d.date.slice(0, 4);
+          (byYear[y] || (byYear[y] = [])).push(d);
+        });
+        const years = Object.keys(byYear).sort((a, b) => b - a);
+
         const tl = document.getElementById("timeline");
         tl.innerHTML = "";
 
-        // update total count
-        document.getElementById("count-all").textContent = data.length;
-
         years.forEach((y) => {
-          const grp = document.createElement("div");
-          grp.className = "year-group";
-
-          const yLabel = document.createElement("div");
-          yLabel.className = "year-label";
-          yLabel.textContent =
-            y +
-            " · " +
-            m[y].length +
-            " " +
-            (m[y].length === 1 ? "activity" : "activities");
-          grp.appendChild(yLabel);
+          byYear[y].sort((a, b) => b.date.localeCompare(a.date));
+          const sep = document.createElement("div");
+          sep.className = "yr-sep";
+          sep.textContent = `${y} · ${byYear[y].length} ${byYear[y].length === 1 ? "activity" : "activities"}`;
+          tl.appendChild(sep);
 
           const grid = document.createElement("div");
-          grid.className = "cards-grid";
+          grid.className = "gal-grid";
 
-          m[y].forEach((item) => {
+          byYear[y].forEach((item) => {
             const cat = CAT[item.cat];
+            const imgUrl = imgFromLink(item);
+            const feat = isFeat(item.link);
+
             const a = document.createElement("a");
-            a.className = "svc-card";
+            a.className = "gal-card" + (feat ? " feat" : "");
             a.href = item.link;
             a.target = "_blank";
             a.rel = "noopener noreferrer";
-            a.style.setProperty("--bar-color", cat.color);
 
             a.innerHTML = `
-        <div class="svc-card-top">
-          <div>
-            <div class="svc-cat-badge" style="background:${cat.color}">${cat.label}</div>
-            <div class="svc-date">${formatDate(item.date)}</div>
-          </div>
+        <div class="gal-img" style="background-image:url('${imgUrl}');background-color:${cat.color}18"></div>
+        <div class="gal-overlay"></div>
+        <div class="gal-front">
+          <span class="gal-cat-pill" style="background:${cat.color}">${cat.label}</span>
+          <div class="gal-title">${item.title}</div>
+          <div class="gal-date">${fmtDate(item.date)}</div>
         </div>
-        <div class="svc-title">${item.title}</div>
-        <div class="svc-role">${item.role}</div>
-        <span class="svc-arrow">↗</span>
-      `;
+        <div class="gal-hover">
+          <div class="gh-title">${item.title}</div>
+          <div class="gh-role">${item.role}</div>
+          <span class="gh-link">View Article</span>
+        </div>`;
+
             grid.appendChild(a);
           });
-
-          grp.appendChild(grid);
-          tl.appendChild(grp);
+          tl.appendChild(grid);
         });
       }
 
-      // Filter interactions
-      const btns = document.querySelectorAll(".filter-btn");
-      btns.forEach((btn) => {
+      // Filters
+      document.querySelectorAll(".fb").forEach((btn) => {
         btn.addEventListener("click", () => {
-          btns.forEach((b) => b.classList.remove("active"));
+          document
+            .querySelectorAll(".fb")
+            .forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
           render(btn.dataset.cat);
         });
       });
 
+      // Animated counters
+      function animateCounter(el) {
+        const target = parseInt(el.dataset.target, 10);
+        const prefix = el.dataset.prefix || "";
+        const suffix = el.dataset.suffix || "";
+        const dur = 1600,
+          steps = 50;
+        let i = 0;
+        const iv = setInterval(() => {
+          i++;
+          el.textContent = prefix + Math.round(target * (i / steps)) + suffix;
+          if (i >= steps) {
+            el.textContent = prefix + target + suffix;
+            clearInterval(iv);
+          }
+        }, dur / steps);
+      }
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              document
+                .querySelectorAll("[data-target]")
+                .forEach(animateCounter);
+              obs.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+      obs.observe(document.querySelector(".hero-stats"));
+
       render("all");
+
+      // ── Carousel ──────────────────────────────────────────────
+      (function () {
+        const track = document.getElementById("sigTrack");
+        const slides = track ? track.querySelectorAll(".sig-card") : [];
+        const dotsWrap = document.getElementById("sigDots");
+        const prevBtn = document.getElementById("sigPrev");
+        const nextBtn = document.getElementById("sigNext");
+        if (!track || slides.length === 0) return;
+
+        let current = 0;
+        const total = slides.length;
+
+        // Build dots
+        slides.forEach((_, i) => {
+          const d = document.createElement("button");
+          d.className = "carousel-dot" + (i === 0 ? " active" : "");
+          d.setAttribute("aria-label", "Slide " + (i + 1));
+          d.addEventListener("click", () => goTo(i));
+          dotsWrap.appendChild(d);
+        });
+
+        function goTo(n) {
+          current = (n + total) % total;
+          track.style.transform = `translateX(-${current * 100}%)`;
+          dotsWrap
+            .querySelectorAll(".carousel-dot")
+            .forEach((d, i) => d.classList.toggle("active", i === current));
+        }
+
+        prevBtn.addEventListener("click", () => goTo(current - 1));
+        nextBtn.addEventListener("click", () => goTo(current + 1));
+
+        // Auto-advance every 6 s
+        let timer = setInterval(() => goTo(current + 1), 6000);
+        [
+          prevBtn,
+          nextBtn,
+          ...dotsWrap.querySelectorAll(".carousel-dot"),
+        ].forEach((el) =>
+          el.addEventListener("click", () => {
+            clearInterval(timer);
+            timer = setInterval(() => goTo(current + 1), 6000);
+          }),
+        );
+
+        // Keyboard
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") goTo(current - 1);
+          if (e.key === "ArrowRight") goTo(current + 1);
+        });
+
+        // Touch swipe
+        let startX = 0;
+        track.addEventListener(
+          "touchstart",
+          (e) => {
+            startX = e.touches[0].clientX;
+          },
+          { passive: true },
+        );
+        track.addEventListener("touchend", (e) => {
+          const dx = e.changedTouches[0].clientX - startX;
+          if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+        });
+      })();
+
+      // ── Sticky nav ────────────────────────────────────────────
+      (function () {
+        const nav = document.getElementById("stickyNav");
+        if (!nav) return;
+        window.addEventListener("scroll", () => {
+          nav.classList.toggle("scrolled", window.scrollY > 60);
+        });
+      })();
     </script>
   </body>
 </html>
