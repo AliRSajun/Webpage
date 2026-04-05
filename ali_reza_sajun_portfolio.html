@@ -565,6 +565,10 @@
           transform 0.45s ease,
           filter 0.35s ease;
       }
+      /* Fallback gradient pattern shown when image fails */
+      .gal-img.img-fallback {
+        background-image: none !important;
+      }
       .gal-card:hover .gal-img {
         transform: scale(1.07);
         filter: brightness(0.45);
@@ -697,6 +701,7 @@
     </style>
   </head>
   <body>
+    <!-- ═══ HERO ═══ -->
     <header class="hero">
       <div class="hero-orb hero-orb-1"></div>
       <div class="hero-orb hero-orb-2"></div>
@@ -752,6 +757,7 @@
       </div>
     </header>
 
+    <!-- ═══ SIGNATURE ═══ -->
     <section>
       <div class="sec-wrap">
         <div class="sec-head">
@@ -763,9 +769,7 @@
           <div class="sig-card tracker">
             <div
               class="sig-bg"
-              style="
-                background-image: url(&quot;downloaded_images/CEN Midterm Tracker.jpg&quot;);
-              "
+              style="background-image: url('image_10b815.jpg')"
             ></div>
             <div class="sig-grad"></div>
             <span class="sig-cat" style="background: rgba(45, 143, 212, 0.85)"
@@ -789,9 +793,7 @@
           >
             <div
               class="sig-bg"
-              style="
-                background-image: url(&quot;downloaded_images/Sharjah Tourism Innovation Hackathon at AUS reimagines travel and tourism experience.jpg&quot;);
-              "
+              style="background-image: url('https://wsrv.nl/?url=https://www.aus.edu/sites/default/files/article%20/sharjah_tourism_innovation_hackathon_at_aus_reimagines_travel_and_tourism_experience.jpg&w=800&output=webp')"
             ></div>
             <div class="sig-grad"></div>
             <span class="sig-cat" style="background: rgba(40, 169, 110, 0.85)"
@@ -814,9 +816,7 @@
           >
             <div
               class="sig-bg"
-              style="
-                background-image: url(&quot;downloaded_images/CSE Students Complete a Study Tour in Switzerland and France.jpg&quot;);
-              "
+              style="background-image: url('https://wsrv.nl/?url=https://www.aus.edu/sites/default/files/article%20/aus_students_explore_frontiers_of_science_during_visit_to_cern.jpg&w=800&output=webp')"
             ></div>
             <div class="sig-grad"></div>
             <span class="sig-cat" style="background: rgba(45, 143, 212, 0.85)"
@@ -836,9 +836,7 @@
           <div class="sig-card">
             <div
               class="sig-bg"
-              style="
-                background-image: url(&quot;downloaded_images/CSE AI Lab Infrastructure.jpg&quot;);
-              "
+              style="background-image: url('IMG-20251007-WA0002.jpg')"
             ></div>
             <div class="sig-grad"></div>
             <span class="sig-cat" style="background: rgba(144, 85, 204, 0.85)"
@@ -858,6 +856,7 @@
       </div>
     </section>
 
+    <!-- ═══ PORTFOLIO ═══ -->
     <section class="portfolio-wrap">
       <div class="portfolio-inner">
         <div class="p-head">
@@ -904,9 +903,17 @@
     <script>
       const CAT = {
         community: { label: "Community & Culture", color: "#e07535" },
-        global: { label: "Global & Industry", color: "#2d8fd4" },
-        innovation: { label: "Innovation & Events", color: "#28a96e" },
-        mentorship: { label: "Academic Mentorship", color: "#9055cc" },
+        global:    { label: "Global & Industry",    color: "#2d8fd4" },
+        innovation:{ label: "Innovation & Events",  color: "#28a96e" },
+        mentorship:{ label: "Academic Mentorship",  color: "#9055cc" },
+      };
+
+      // Fallback gradient patterns per category
+      const CAT_FALLBACK = {
+        community:  "linear-gradient(135deg, #3d1a0a 0%, #7a3318 50%, #1a0d05 100%)",
+        global:     "linear-gradient(135deg, #071e3d 0%, #0e3d6e 50%, #03111e 100%)",
+        innovation: "linear-gradient(135deg, #062b1a 0%, #115e39 50%, #031509 100%)",
+        mentorship: "linear-gradient(135deg, #1e0b3d 0%, #4a1f7a 50%, #0f0520 100%)",
       };
 
       const FEATURED = new Set([
@@ -917,103 +924,6 @@
         "cse-students-visit-google-to-explore-learning-opportunities",
         "cse-students-explore-cutting-edge-technologies-at-microsoft-innovation-hub",
       ]);
-
-      const FILENAME_MAP = {
-        "Dr. Zualkernan Welcomes CSE Freshman Students":
-          "Dr. Zualkernan Welcomes CSE Freshman Students.jpg",
-        "CSE Students Finalists in DELL Envision the Future 2023":
-          "CSE Students Recognized as Finalists in the Annual 2023 Envision the Future Competition hosted by DELL.jpg",
-        "CSE Holds Meet the Department Head Event":
-          "CSE Holds Meet the Department Head Event.jpg",
-        "CEN Clubs Hold Python Workshop Series":
-          "CEN Clubs Hold an Introduction to Python Workshop Series.jpg",
-        "IEEECS Hosts 'Welcome to CSE' Panel Discussion": "IEEECS Hosts.jpg",
-        "CEN Students Embark on Study Trip to South Korea":
-          "CEN Students Embark on Study Trip to South Korea.jpg",
-        "CSE Hosts Student Trip to Al-Aweer Desert":
-          "CSE Hosts Student Trip to Al-Aweer Desert.jpg",
-        "Computer Engineering Club Holds PC Building Workshop":
-          "The Computer Engineering Club Holds a PC Building Workshop.jpg",
-        "CSE Hosts Ramadan Iftar for Senior Students":
-          "CSE Hosts Ramadan Iftar for Senior Students.jpg",
-        "CSE Hosts a Virtual Meet the Department Head Event":
-          "CSE Hosts a Virtual Meet the Department Head Event.png",
-        "CSE Faculty Judge Al Shola Schools 2024 IT Competition":
-          "CSE Faculty Invited to Judge Al Shola Schools 2024 IT Competition.jpg",
-        "CSE Hosts Meet the Department Head for Graduate Students":
-          "CSE Hosts Meet the Department Head for Graduate Students.jpg",
-        "CSE Students Visit Odoo Middle East":
-          "CSE Students Visit Odoo Middle East to Explore Learning Opportunities.jpg",
-        "CSE Holds Meet the CSE Faculty Event":
-          "CSE Holds Meet the CSE Faculty Event.jpg",
-        "AUS Computing Competition — AI & App/IoT Track":
-          "AUS computing competition tests students in programming, AI and appIoT development.jpg",
-        "CSE Students Complete Study Tour in Switzerland & France (CERN)":
-          "CSE Students Complete a Study Tour in Switzerland and France.jpg",
-        "AUS Wins Best Short Paper Award at IEEE ICALT 2024":
-          "AUS team wins Best Short Paper Award for AI-powered student engagement device at IEEE ICALT Conference 2024.jpg",
-        "ASME & Computer Engineering Club Win at AUS Club Fair":
-          "ASME and the Computer Engineering Club Win at AUS Club Fair for Fall 2024.jpg",
-        "CSE Students Visit Accenture Middle East":
-          "CSE Students Visit Accenture Middle East to Explore Learning Opportunities.jpg",
-        "CSE Holds Meet the Head of Department on Instagram":
-          "CSE Holds Meet the Head of Department on Instagram Event.jpg",
-        "CSE Hosts a Trip to Motiongate Dubai":
-          "CSE Hosts a Trip to Motiongate Dubai.jpg",
-        "28 Teams Recognized with Undergraduate Research Grants":
-          "28 Teams Recognized with Undergraduate Research Grants at College of Engineering.jpg",
-        "CSE Students Explore Technologies at Microsoft Innovation Hub":
-          "CSE Students Explore Cutting-edge Technologies at Microsoft Innovation Hub.jpg",
-        "CSE Hosts a Graduate Students Mixer Event":
-          "CSE Hosts a Graduate Students Mixer Event.jpg",
-        "CHBE Students Embark on Study Trip to Italy":
-          "CHBE Students Embark on a Study Trip to Italy.jpg",
-        "CSE Students Explore Hatta":
-          "CSE Students Explore Hatta A Day of Adventure, Bonding, and Fun.jpg",
-        "CSE Launches the CSE Graduate Society Student Club":
-          "CSE Launches the CSE Graduate Society Student Club.jpg",
-        "CSE Graduate Society Hosts First Iftar Gathering":
-          "CSE Graduate Society hosts first iftar gathering to strengthen community bonds.jpg",
-        "CSE Hosts Interactive Instagram Live for Students":
-          "CSE hosts interactive Instagram Live to address student questions.jpg",
-        "CSE Hosts Game Night — Jigsaws & Connection":
-          "CSE hosts Game Night and students compete, connect and unwind over jigsaws.jpg",
-        "CSE Holds the Annual Meet the Faculty Event":
-          "CSE holds the annual Meet the Faculty event.jpg",
-        "CSE Students Visit Chalhoub Group":
-          "CSE students gain industry insights during a visit to Chalhoub Group.jpg",
-        "CSE Grad Games Night":
-          "CSE Grad Games Night fosters fun, community and connection.jpg",
-        "CSE Students Embark on Study Trip to Turkey":
-          "CSE students embark on a study trip to Turkey.jpg",
-        "CSE Hosts Meet the HoD Event": "CSE hosts Meet the HOD event.jpg",
-        "CSE Hosts Graduate Meet the Faculty Event":
-          "CSE hosts Graduate Meet the Faculty event.jpg",
-        "AUS Welcomes Korean Delegation":
-          "AUS welcomes Korean Delegation to strengthen academic and research collaboration.jpg",
-        "Panel: CSE Grads at Odoo — From Campus to Global Impact":
-          "CSE hosts panel discussion entitled From Campus to Global Impact CSE Grads at Odoo.jpg",
-        "Sharjah Tourism Innovation Hackathon at AUS":
-          "Sharjah Tourism Innovation Hackathon at AUS reimagines travel and tourism experience.jpg",
-        "AUS Students Recognized at Global Undergraduate Awards 2025":
-          "AUS students recognized among regional winners at the Global Undergraduate Awards 2025.jpg",
-        "CSE Faculty, Staff & Students Explore Khorfakkan":
-          "CSE faculty, staff and students explore Khorfakkan.jpg",
-        "AUS College of Engineering Invests AED 264,900 in Undergraduate Research Grants":
-          "AUS College of Engineering invests AED 264,900 in student-led projects through Undergraduate Research Grants.jpg",
-        "CSE Students Complete Study Trip to Japan (SEMICON 2025)":
-          "CSE students complete a study trip to Japan.jpg",
-        "Algorithm Club Kicks Off Semester at Week of Welcome":
-          "Algorithm Club kicks off semester during the Week of Welcome event.jpg",
-        "CSE Hosts InnovateX Hackathon 2026 powered by TDRA":
-          "CSE hosts InnovateX Hackathon 2026 powered by TDRA.jpg",
-        "CSE Students Visit Bayut and Dubizzle":
-          "CSE students visit Bayut and Dubizzle to explore learning opportunities.jpg",
-        "CSE Students Visit Wadi Wurayah Protected National Park":
-          "CSE students visit Wadi Wurayah Protected National Park to explore research opportunities.jpg",
-        "CSE Students Visit Google":
-          "CSE students visit Google to explore learning opportunities.jpg",
-      };
 
       const data = [
         {
@@ -1122,8 +1032,7 @@
           cat: "innovation",
         },
         {
-          title:
-            "CSE Students Complete Study Tour in Switzerland & France (CERN)",
+          title: "CSE Students Complete Study Tour in Switzerland & France (CERN)",
           date: "2024-06-10",
           role: "Organized and led international study tour — secured AUS's first ever CERN visit",
           link: "https://www.aus.edu/article/cse-students-complete-a-study-tour-in-switzerland-and-france",
@@ -1172,15 +1081,14 @@
           cat: "mentorship",
         },
         {
-          title:
-            "CSE Students Explore Technologies at Microsoft Innovation Hub",
+          title: "CSE Students Explore Technologies at Microsoft Innovation Hub",
           date: "2024-11-22",
           role: "Led and organized Industry Connect visit",
           link: "https://www.aus.edu/article/cse-students-explore-cutting-edge-technologies-at-microsoft-innovation-hub",
           cat: "global",
         },
         {
-          title: "CSE Hosts a Graduate Students mixer event",
+          title: "CSE Hosts a Graduate Students Mixer Event",
           date: "2024-11-25",
           role: "Organized graduate student social event",
           link: "https://www.aus.edu/article/cse-hosts-a-graduate-students-mixer-event",
@@ -1306,8 +1214,7 @@
           cat: "community",
         },
         {
-          title:
-            "AUS College of Engineering Invests AED 264,900 in Undergraduate Research Grants",
+          title: "AUS College of Engineering Invests AED 264,900 in Undergraduate Research Grants",
           date: "2025-12-10",
           role: "Co-advised 2 of the winning undergraduate research projects",
           link: "https://www.aus.edu/media/news/aus-college-of-engineering-invests-aed-264900-in-student-led-projects-through-undergraduate-research-grants",
@@ -1372,15 +1279,20 @@
         if (el) el.textContent = counts[c];
       });
 
-      function imgFromLink(item) {
-        // Try to find the exact filename from the provided manifest mapping
-        const mappedFile = FILENAME_MAP[item.title];
-        if (mappedFile) {
-          return `downloaded_images/${mappedFile}`;
-        }
+      // Build proxied AUS image URL via wsrv.nl
+      // wsrv.nl fetches the image server-side, bypassing AUS hotlink protection
+      function proxyUrl(rawUrl) {
+        return `https://wsrv.nl/?url=${encodeURIComponent(rawUrl)}&w=800&output=webp`;
+      }
 
-        // Fallback for custom entries not in the AUS list
-        return `downloaded_images/${item.title}.jpg`;
+      function imgFromLink(link) {
+        // AUS article images follow the pattern:
+        // /sites/default/files/article /slug_with_underscores.jpg
+        // For /media/news/ paths the same convention holds
+        const parts = link.replace(/\/$/, "").split("/");
+        const slug = parts[parts.length - 1].split("#")[0].replace(/-/g, "_");
+        const rawUrl = `https://www.aus.edu/sites/default/files/article%20/${slug}.jpg`;
+        return proxyUrl(rawUrl);
       }
 
       function isFeat(link) {
@@ -1393,6 +1305,26 @@
           day: "numeric",
           year: "numeric",
         });
+      }
+
+      // Apply fallback gradient when image fails to load
+      function applyFallback(el, cat) {
+        el.classList.add("img-fallback");
+        el.style.backgroundImage = "none";
+        el.style.background = CAT_FALLBACK[cat] || "linear-gradient(135deg, #0e2035, #162d47)";
+      }
+
+      // Use a hidden Image object to test if the proxied URL loads;
+      // if not, swap to gradient fallback
+      function testAndSetBg(el, url, cat) {
+        const img = new Image();
+        img.onload = () => {
+          // Image loaded fine — keep the background-image
+        };
+        img.onerror = () => {
+          applyFallback(el, cat);
+        };
+        img.src = url;
       }
 
       function render(filter) {
@@ -1420,7 +1352,7 @@
 
           byYear[y].forEach((item) => {
             const cat = CAT[item.cat];
-            const imgUrl = imgFromLink(item);
+            const imgUrl = imgFromLink(item.link);
             const feat = isFeat(item.link);
 
             const a = document.createElement("a");
@@ -1429,19 +1361,25 @@
             a.target = "_blank";
             a.rel = "noopener noreferrer";
 
+            const bgStyle = `background-image:url('${imgUrl}');background-color:${cat.color}18`;
+
             a.innerHTML = `
-        <div class="gal-img" style="background-image:url('${imgUrl}');background-color:${cat.color}18"></div>
-        <div class="gal-overlay"></div>
-        <div class="gal-front">
-          <span class="gal-cat-pill" style="background:${cat.color}">${cat.label}</span>
-          <div class="gal-title">${item.title}</div>
-          <div class="gal-date">${fmtDate(item.date)}</div>
-        </div>
-        <div class="gal-hover">
-          <div class="gh-title">${item.title}</div>
-          <div class="gh-role">${item.role}</div>
-          <span class="gh-link">View Article</span>
-        </div>`;
+              <div class="gal-img" style="${bgStyle}"></div>
+              <div class="gal-overlay"></div>
+              <div class="gal-front">
+                <span class="gal-cat-pill" style="background:${cat.color}">${cat.label}</span>
+                <div class="gal-title">${item.title}</div>
+                <div class="gal-date">${fmtDate(item.date)}</div>
+              </div>
+              <div class="gal-hover">
+                <div class="gh-title">${item.title}</div>
+                <div class="gh-role">${item.role}</div>
+                <span class="gh-link">View Article</span>
+              </div>`;
+
+            // Test image; apply fallback if proxy also fails
+            const imgEl = a.querySelector(".gal-img");
+            testAndSetBg(imgEl, imgUrl, item.cat);
 
             grid.appendChild(a);
           });
@@ -1452,9 +1390,7 @@
       // Filters
       document.querySelectorAll(".fb").forEach((btn) => {
         btn.addEventListener("click", () => {
-          document
-            .querySelectorAll(".fb")
-            .forEach((b) => b.classList.remove("active"));
+          document.querySelectorAll(".fb").forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
           render(btn.dataset.cat);
         });
@@ -1465,8 +1401,7 @@
         const target = parseInt(el.dataset.target, 10);
         const prefix = el.dataset.prefix || "";
         const suffix = el.dataset.suffix || "";
-        const dur = 1600,
-          steps = 50;
+        const dur = 1600, steps = 50;
         let i = 0;
         const iv = setInterval(() => {
           i++;
@@ -1481,14 +1416,12 @@
         (entries) => {
           entries.forEach((e) => {
             if (e.isIntersecting) {
-              document
-                .querySelectorAll("[data-target]")
-                .forEach(animateCounter);
+              document.querySelectorAll("[data-target]").forEach(animateCounter);
               obs.disconnect();
             }
           });
         },
-        { threshold: 0.3 },
+        { threshold: 0.3 }
       );
       obs.observe(document.querySelector(".hero-stats"));
 
